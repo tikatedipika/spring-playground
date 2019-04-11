@@ -11,4 +11,7 @@ public class HelloController {
     public String helloWorld() {
         return "Hello from Spring!";
     }
+
+    @GetMapping("/math/pi")
+    public  String getPI(){return "3.141592653589793";}
 }
