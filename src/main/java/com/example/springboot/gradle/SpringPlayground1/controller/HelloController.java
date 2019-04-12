@@ -42,4 +42,14 @@ public class HelloController {
         }
         return str+" = "+sum;
     }
+    @PostMapping("/math/volume/{length}/{height}/{width}")
+    public String calVolume(@PathVariable int length,@PathVariable int height,@PathVariable int width ){
+        int volume= length*height*width;
+        return "The volume of a "+length+"x"+height+"x"+width+" rectangle is "+ volume;
+    }
+    @PatchMapping("/math/volume/{length}/{height}/{width}")
+    public String calRectVolume(@PathVariable int length,@PathVariable int height,@PathVariable int width ){
+        int volume= length*height*width;
+        return "The volume of a "+length+"x"+height+"x"+width+" rectangle is "+ volume;
+    }
 }
