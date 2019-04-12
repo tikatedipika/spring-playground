@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 //import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
@@ -38,5 +39,18 @@ public class HelloControllerTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testGetmath() throws Exception {
+        this.mock.perform(get("/math/calculate?operation=add&x=4&y=6").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().isOk())
+                .andExpect(content().string("4 + 6 = 10"));
+    }
+    @Test
+    public void testSum() throws Exception {
+        this.mock.perform(post("/math/sum?n=4&n=5&n=6").accept(MediaType.TEXT_PLAIN))
+                .andExpect(status().isOk())
+                .andExpect(content().string("4 + 5 + 6 = 15"));
     }
 }
